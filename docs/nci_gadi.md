@@ -34,7 +34,7 @@ nextflow run <nf-core_pipeline>/main.nf \
 
 #### External network access
 
-Please be aware that NCI Gadi HPC compute nodes **do not** have external network access. This means you will not be able to pull the workflow codebase or containers if you submit your `nextflow run` command as a job on any of the standard job queues (see the [nf-core documentation](https://nf-co.re/docs/usage/offline) for instructions on running pipelines offline). NCI currently recommends you run your Nextflow head job either in a GNU screen or tmux session within a [persistent session](https://opus.nci.org.au/spaces/Help/pages/241926895/Persistent+Sessions), or submit it as a job to the [copyq](https://opus.nci.org.au/display/Help/Queue+Structure). 
+Please be aware that NCI Gadi HPC compute nodes **do not** have external network access. This means you will not be able to pull the workflow codebase or containers if you submit your `nextflow run` command as a job on any of the standard job queues (see the [nf-core documentation](https://nf-co.re/docs/usage/offline) for instructions on running pipelines offline). NCI currently recommends you run your Nextflow head job either in a GNU screen or tmux session within a [persistent session](https://opus.nci.org.au/spaces/Help/pages/241926895/Persistent+Sessions), or submit it as a job to the [copyq](https://opus.nci.org.au/display/Help/Queue+Structure).
 
 For example, to run Nextflow in a GNU screen session within a persistent session:
 
