@@ -18,6 +18,10 @@ module load nextflow
 module load singularity
 ```
 
+:::warning
+The version of Nextflow installed on Gadi has been modified to make it easier to specify resource options for jobs submitted to the cluster through the Nextflow process block (see NCI's [Gadi user guide](https://opus.nci.org.au/display/DAE/Nextflow) for more details).
+:::
+
 You can then run the pipeline using:
 
 ```bash
