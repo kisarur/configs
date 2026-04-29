@@ -52,10 +52,10 @@ You can detach from the screen session using Ctrl+A, then D, and log out of the 
 This config requires Nextflow to use [Singularity](https://www.nextflow.io/docs/latest/container.html#singularity) to execute processes. Before any process can be executed, the nf-core pipeline will first download the required container image to a local cache. This cache location can be specified using either `$NXF_SINGULARITY_CACHEDIR` environment variable or the `singularity.cacheDir` setting in the Nextflow config file. `nci_gadi.config` specifies the download and storage location with:
 
 ```
-singularity.cacheDir = "/scratch/${params.project}/${System.getenv('USER')}/nxf_singularity_cache"
+singularity.cacheDir = "/scratch/${params.nci_gadi_project}/${System.getenv('USER')}/nxf_singularity_cache"
 ```
 
-See the [project accounting](#project-accounting) section below for details on `params.project`.
+See the [project accounting](#project-accounting) section below for details on `params.nci_gadi_project`.
 
 Furthermore, Singularity uses the `$SINGULARITY_CACHEDIR` directory to store intermediate image layers and files during pulls (note that this cache is only used when the required container is not already available in Nextflow's own Singularity cache, specified by `$NXF_SINGULARITY_CACHEDIR` or `singularity.cacheDir`). By default, `$SINGULARITY_CACHEDIR` is set to `$HOME/.singularity/cache`. For pipelines involving a large number and/or large size of first-time container downloads, we recommend setting this environment variable to a scratch location to avoid exceeding your home filesystem quota. For example, before running your nextflow run command, you can set the environment variable to a location in the scratch filesystem with:
 
@@ -75,9 +75,9 @@ Note that these are only baseline queue settings and may be adjusted depending o
 
 ### Project accounting
 
-This config uses `params.project` to assign a project code to all task job submissions for billing purposes. By default, this is set to the environment variable `$PROJECT`. If you are a member of multiple Gadi projects, you can choose which project will be charged for your pipeline execution by setting `params.project` (`--project` on the command line) to the desired project code.
+This config uses `params.nci_gadi_project` to assign a project code to all task job submissions for billing purposes. By default, this is set to the environment variable `$PROJECT`. If you are a member of multiple Gadi projects, you can choose which project will be charged for your pipeline execution by setting `params.nci_gadi_project` (`--nci_gadi_project` on the command line) to the desired project code.
 
-Similarly, `params.storage` (`--storage` on the command line) is used to specify the storage locations that the pipeline needs to access. By default, this is set to `gdata/${params.project}+scratch/${params.project}`.
+Similarly, `params.nci_gadi_storage` (`--nci_gadi_storage` on the command line) is used to specify the storage locations that the pipeline needs to access. By default, this is set to `gdata/${params.nci_gadi_project}+scratch/${params.nci_gadi_project}`.
 
 Note: The version of Nextflow installed on Gadi has been modified to make it easier to specify resource options for jobs submitted to the cluster through the Nextflow process block (see NCI's [Gadi user guide](https://opus.nci.org.au/display/DAE/Nextflow) for more details). The values specified through the parameters above are passed into the process block in the `nci_gadi.config`.
 
